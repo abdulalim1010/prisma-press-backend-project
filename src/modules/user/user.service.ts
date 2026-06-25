@@ -13,7 +13,7 @@ const registerIntoDB=async (payload:RegisterUserPayload)=>{
      const userExist=await prisma.user.findUnique({
     where:{
         email   }})
-        if (userExist) {throw new Error("user already exist")}
+        if (userExist) {throw new Error("user with this email already exists")}
 
 
 
@@ -23,16 +23,20 @@ const registerIntoDB=async (payload:RegisterUserPayload)=>{
                 name,
                 email,
                 password:hashedPassword,
-                
+                profile:{
+                    create:{
+                        profilePhoto
+                    }
+                }
             }
 
         })
-  await prisma.profile.create({
-            data:{
-                userId:createdUser.id,
-                profilePhoto,
-            }
-        })
+//   await prisma.profile.create({
+//             data:{
+//                 userId:createdUser.id,
+//                 profilePhoto,
+//             }
+//         })
 
       const user=await prisma.user.findUnique({
         where:{
