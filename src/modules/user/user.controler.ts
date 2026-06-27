@@ -3,11 +3,13 @@ import { prisma } from "../../lib/prsima";
 import bcrypt from "bcryptjs";
 import config from "../../config";
 import sttpStatus from "http-status";
+import { HttpStatus } from "http-status";
 import { userService } from "./user.service";
 import { catchAsync } from "../../utils/catchAsync";
 import { sendResponse } from "../../utils/sendResponse";
 import jwt from "jsonwebtoken"
 import { jwtUtils } from "../../utils/jwt";
+import httpStatus from "http-status";
 
 
 
@@ -37,8 +39,21 @@ const verifiedToken=jwtUtils.verifyToken(accessToken,config.jwt_secret_access)
 console.log(verifiedToken)
 
 
+if(typeof verifiedToken==="string"){
 
-res.send("get my profile")
+    throw new Error(verifiedToken);
+    
+}
+
+const profile=await userService.getMyProfileDB(verifiedToken.userId)
+
+sendResponse (res,{
+    success:true,
+    statusCode:httpStatus.OK,
+    message:"user profile feached successfully",
+    data:{profile}
+
+})
 })
 
 
