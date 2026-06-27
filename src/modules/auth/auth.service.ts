@@ -3,6 +3,7 @@ import { prisma } from "../../lib/prsima"
 import { ILoginUser } from "./auth.interface"
 import jwt, { SignOptions } from "jsonwebtoken"
 import config from "../../config"
+import { jwtUtils } from "../../utils/jwt"
 
 
 const loginUser=async(payload:ILoginUser )=>{
@@ -24,15 +25,19 @@ email:user.email ,
     role:user.role   
    }
 
-const accessToken=jwt.sign(jwtPayload,config.jwt_secret_access,
-    {expiresIn:config.jwt_access_expires_in}as SignOptions
+// const accessToken=jwt.sign(jwtPayload,config.jwt_secret_access,
+//     {expiresIn:config.jwt_access_expires_in}as SignOptions
 
-)
+// )
+const accessToken=jwtUtils.createToken(jwtPayload ,
+    config.jwt_secret_access,config.jwt_access_expires_in as SignOptions);
 
-const refreshToken=jwt.sign(jwtPayload,config.jwt_refresh_secret,
-    {expiresIn:config.jwt_refresh_expires_in} as SignOptions
+// const refreshToken=jwt.sign(jwtPayload,config.jwt_refresh_secret,
+//     {expiresIn:config.jwt_refresh_expires_in} as SignOptions
    
-)     
+// )     
+const refreshToken=jwtUtils.createToken(jwtPayload,config.jwt_refresh_secret,
+    config.jwt_refresh_expires_in as SignOptions)
 
    return { user, accessToken, refreshToken }
     // Implementation for logging in a user 

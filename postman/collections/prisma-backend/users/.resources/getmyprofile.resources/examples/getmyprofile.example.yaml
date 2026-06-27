@@ -1,0 +1,31 @@
+$kind: http-example
+request:
+  url: http://localhost:5000/api/users/me
+  method: GET
+  body:
+    type: json
+    content: "{\r
+
+      \    \"email\": \"alim@gmail.com\",\r
+
+      \    \"password\": \"123456\"\r
+
+      }"
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    x-powered-by: Express
+    access-control-allow-origin: http://localhost:5000
+    vary: Origin
+    access-control-allow-credentials: "true"
+    content-type: text/html; charset=utf-8
+    content-length: "14"
+    etag: W/"e-O4ybMyCK7Sorufk6Nn4nF0G3ON8"
+    date: Sat, 27 Jun 2026 09:39:35 GMT
+    connection: keep-alive
+    keep-alive: timeout=5
+  body:
+    type: html
+    content: get my profile
+order: 1782553187394

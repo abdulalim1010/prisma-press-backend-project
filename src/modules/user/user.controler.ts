@@ -6,6 +6,8 @@ import sttpStatus from "http-status";
 import { userService } from "./user.service";
 import { catchAsync } from "../../utils/catchAsync";
 import { sendResponse } from "../../utils/sendResponse";
+import jwt from "jsonwebtoken"
+import { jwtUtils } from "../../utils/jwt";
 
 
 
@@ -26,38 +28,21 @@ const registerUser=catchAsync(async(req:Request,res:Response,next:NextFunction)=
 //      data:
 //      {user},
 //      message:"user register successfully"})
-        
-   
-    
+})
+const getMyProfile=catchAsync(async(req:Request,res:Response,next:NextFunction)=>{
+
+    const {accessToken}=req.cookies
+    console.log(accessToken)
+const verifiedToken=jwtUtils.verifyToken(accessToken,config.jwt_secret_access)
+console.log(verifiedToken)
 
 
+
+res.send("get my profile")
 })
 
 
-// const registerUser=async(req:Request,res:Response)=>{
-//     try {const payload=req.body
-//   const user=await userService.registerIntoDB(payload)
- 
-
-
-//   res.status(sttpStatus.CREATED).json({
-//     success:true,
-//     statusCode:sttpStatus.CREATED,
-//     data:
-//     {user},
-//     message:"user register successfully"})
-        
-//     } catch (error) {
-//         console.log(error)
-//         res.status(sttpStatus.INTERNAL_SERVER_ERROR).json({
-//             success:false,
-//             statusCode:sttpStatus.INTERNAL_SERVER_ERROR,
-//             message:"internal server error",
-//             error:(error as Error).message
-//         })
-        
-//     }
-// }
 export const userController={
-    registerUser
+    registerUser,
+    getMyProfile
 }
