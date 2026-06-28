@@ -1,0 +1,60 @@
+$kind: http-example
+name: register
+request:
+  url: http://localhost:5000/api/users/register
+  method: POST
+  body:
+    type: json
+    content: "{\r
+
+      \  \"name\": \"Abdul Alim\",\r
+
+      \  \"email\": \"abcdefg.com\",\r
+
+      \  \"password\": \"123456\",\r
+
+      \  \"profilePhoto\": \"https://example.com/photo.jpg\"\r
+
+      }"
+response:
+  statusCode: 201
+  statusText: Created
+  headers:
+    x-powered-by: Express
+    access-control-allow-origin: http://localhost:5000
+    vary: Origin
+    access-control-allow-credentials: "true"
+    content-type: application/json; charset=utf-8
+    content-length: "533"
+    etag: W/"215-JYYUF0O5O1wio8lv7rM0nSHZuC0"
+    date: Sun, 28 Jun 2026 16:10:24 GMT
+    connection: keep-alive
+    keep-alive: timeout=5
+  body:
+    type: json
+    content: |-
+      {
+        "success": true,
+        "statusCode": 201,
+        "message": "user register successfully",
+        "data": {
+          "user": {
+            "id": "c209685b-a0b8-4ef5-954c-fcc3cff975c2",
+            "name": "Abdul Alim",
+            "email": "abcdefg.com",
+            "activeStatus": "ACTIVE",
+            "role": "USER",
+            "createdAT": "2026-06-28T16:10:23.902Z",
+            "updatedAt": "2026-06-28T16:10:23.902Z",
+            "profile": {
+              "oid": "723d5a26-31d9-4a66-ac68-60108e3f5af5",
+              "profilePhoto": "https://example.com/photo.jpg",
+              "bio": null,
+              "userId": "c209685b-a0b8-4ef5-954c-fcc3cff975c2",
+              "createdAt": "2026-06-28T16:10:23.902Z",
+              "updatedAt": "2026-06-28T16:10:23.902Z"
+            }
+          }
+        }
+      }
+order: 1825563411805220

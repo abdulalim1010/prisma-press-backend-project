@@ -1,4 +1,5 @@
 $kind: http-request
 url: ""
 method: GET
+examples: .resources/register.resources/examples
 order: 662959935282255

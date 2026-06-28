@@ -33,19 +33,7 @@ const registerUser=catchAsync(async(req:Request,res:Response,next:NextFunction)=
 })
 const getMyProfile=catchAsync(async(req:Request,res:Response,next:NextFunction)=>{
 
-    // const {accessToken}=req.cookies
-    
-    // console.log(accessToken)
-    
-// const verifiedToken=jwtUtils.verifyToken(accessToken,config.jwt_secret_access)
-// console.log(verifiedToken)
 
-
-// if(typeof verifiedToken==="string"){
-
-//     throw new Error(verifiedToken);
-    
-// }
 
 const profile=await userService.getMyProfileDB(req.user?.userId as string)
 
@@ -59,7 +47,22 @@ sendResponse (res,{
 })
 
 
+const updatedMyProfile=catchAsync(async(req:Request,res:Response,next:NextFunction)=>{
+const userId=req.user?.userId as string
+const payload=req.body;
+const updatedProfile=await userService.updatedMyProfileDB(userId,payload)
+sendResponse(res,{
+    success:true,
+    statusCode:httpStatus.OK,
+    message:"user profile updated successfully",
+    data: {
+        updatedProfile
+    }
+})
+})
+
 export const userController={
     registerUser,
-    getMyProfile
+    getMyProfile,
+    updatedMyProfile
 }

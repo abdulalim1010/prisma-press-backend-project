@@ -66,4 +66,12 @@ auth(Role.ADMIN,Role.AUTHOR,Role.USER),
   userController.getMyProfile
 );
 
+
+
+router.put(
+  "/my-profile",
+  auth(Role.ADMIN, Role.USER, Role.AUTHOR),
+  userController.updatedMyProfile
+);
+
 export const userRouter = router;
