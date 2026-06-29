@@ -1,0 +1,20 @@
+$kind: http-request
+url: http://localhost:5000/api/users/register
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \  \"name\": \"Abdul Alim\",\r
+
+    \  \"email\": \"abcdefg.com\",\r
+
+    \  \"password\": \"123456\",\r
+
+    \  \"profilePhoto\": \"https://example.com/photo.jpg\"\r
+
+    }"
+auth:
+  type: noauth
+examples: .resources/register.resources/examples
+order: 1782672480984

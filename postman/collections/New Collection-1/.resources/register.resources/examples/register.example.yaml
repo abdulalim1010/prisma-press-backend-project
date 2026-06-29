@@ -1,0 +1,41 @@
+$kind: http-example
+request:
+  url: http://localhost:5000/api/users/register
+  method: POST
+  body:
+    type: json
+    content: "{\r
+
+      \  \"name\": \"Abdul Alim\",\r
+
+      \  \"email\": \"abcdefgh.com\",\r
+
+      \  \"password\": \"123456\",\r
+
+      \  \"profilePhoto\": \"https://example.com/photo.jpg\"\r
+
+      }"
+response:
+  statusCode: 500
+  statusText: Internal Server Error
+  headers:
+    x-powered-by: Express
+    access-control-allow-origin: http://localhost:5000
+    vary: Origin
+    access-control-allow-credentials: "true"
+    content-type: application/json; charset=utf-8
+    content-length: "114"
+    etag: W/"72-oHPl/0+uFiYPZEn7iqdAcCbcJZw"
+    date: Sun, 28 Jun 2026 18:54:17 GMT
+    connection: keep-alive
+    keep-alive: timeout=5
+  body:
+    type: json
+    content: |-
+      {
+        "success": false,
+        "statusCode": 500,
+        "message": "internal server error",
+        "error": "user with this email already exists"
+      }
+order: 1782672869258

@@ -8,6 +8,7 @@ import { catchAsync } from "../../utils/catchAsync";
 import { JwtPayload } from "jsonwebtoken";
 import { prisma } from "../../lib/prsima";
 import { auth } from "../../middleware/auth";
+import { authController } from "../auth/auth.controller";
 const router = Router();
 
 
@@ -15,7 +16,6 @@ const router = Router();
 
 
 router.post("/register", userController.registerUser);
-
 
 
 
