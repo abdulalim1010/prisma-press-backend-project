@@ -25,4 +25,9 @@ app.get("/",(req:Request,res:Response)=>{
 // app.get()
 app.use("/api/users",userRouter)
 app.use("/api/auth",authRouter)
+app.use("api/comments",postRouter)
+
+
+
+
 export default app;
