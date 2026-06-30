@@ -11,7 +11,7 @@ router.get("/stats", auth(Role.ADMIN), postController.getPostStats);
 
 router.get("/my-posts", auth(Role.ADMIN, Role.USER), postController.getMyPosts);
 
-router.get("/:postId", postController.getSinglePost);
+router.get("/:postId", postController.getPostbyId);
 
 router.post("/", auth(Role.ADMIN, Role.USER), postController.createPost);
 
